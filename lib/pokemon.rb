@@ -10,12 +10,11 @@ class Pokemon
   end
 
   def save
-    if self.id
-      sql = <<-SQL
-        INSERT INTO pokemon (name, type, db)
-        VALUES ?, ?, ?
-      SQL
-      DB[:conn].execute(sql, self.name, self.type, self.db)
+    sql = <<-SQL
+      INSERT INTO pokemon (name, type, db)
+      VALUES ?, ?, ?
+    SQL
+    DB[:conn].execute(sql, self.name, self.type, self.db)
   end
 
   def self.find
